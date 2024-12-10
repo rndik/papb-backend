@@ -11,9 +11,9 @@ use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductCategoryController;
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -21,6 +21,13 @@ use App\Http\Controllers\ProductCategoryController;
 |
 */
 
+// Route untuk halaman utama
+Route::get('/', function () {
+    // Redirect ke halaman login jika belum login
+    return redirect()->route('login');
+});
+
+// Routes yang membutuhkan autentikasi
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
    
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
